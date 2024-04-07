@@ -1,1 +1,0 @@
-readme para esta repo 
