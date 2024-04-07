@@ -7,10 +7,11 @@ const string = process.argv[3];
 
 if (!filepath) {
   console.log('Error: invalid route');
-} else {
-  fs.writeFile(filepath, string, 'utf-8', (error) => {
-    if (error) {
-      console.log('An error occurred while writing to the file', error);
-    }
-  });
+  process.exit(1)
 }
+
+fs.writeFile(filepath, string, 'utf-8', (error) => {
+  if (error) {
+    console.log('An error occurred while writing to the file', error);
+  }
+});
