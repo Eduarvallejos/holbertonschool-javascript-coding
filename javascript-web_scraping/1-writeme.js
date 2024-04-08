@@ -1,4 +1,6 @@
 #!/usr/bin/node
+// This script writes a string to a file.
+
 
 const fs = require('fs');
 
@@ -15,3 +17,4 @@ fs.writeFile(filepath, string, 'utf-8', (error) => {
     console.log(error);
   }
 });
+
