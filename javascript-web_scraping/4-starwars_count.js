@@ -3,25 +3,28 @@
 
 const request = require('request');
 
-const apiUrl = process.argv[2];
+const url = process.argv[2];
+const idPeople = 'https://swapi-api.hbtn.io/api/people/18/';
 
-if (!apiUrl) {
-  console.log('Error: Please provide the API URL of the Star Wars API.');
-} else {
-  request.get(apiUrl, (error, response, body) => {
-    if (error) {
-      console.log('Error:', error);
-    } else if (response.statusCode !== 200) {
-      console.log('Error:', response.statusCode);
-    } else {
-      const films = JSON.parse(body).results;
-      let count = [];
-      films.forEach(film => {
-        if (film.characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
-          count++;
-        }
-      });
-      console.log(count);
-    }
-  });
+if (!url) {
+  console.log('Please provide the API URL of the Star Wars API.');
+  process.exit(1);
 }
+
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  if (response.statusCode === 200) {
+    const charactersTotal = JSON.parse(body);
+    const n = [];
+    for (let i = 0; i < charactersTotal.count; i++) {
+      n.push(...charactersTotal.results[i].characters);
+    }
+    console.log(n.filter((v) => v === idPeople).length);
+  } else {
+    console.log(`Error: ${response.statusCode}`);
+  }
+});
