@@ -1,4 +1,5 @@
 #!/usr/bin/node
+//This script reads and prints a file
 
 const fs = require('fs');
 
@@ -18,3 +19,4 @@ if (process.argv.length < 3) {
   const filePath = process.argv[2];
   readAndPrintFile(filePath);
 }
+
