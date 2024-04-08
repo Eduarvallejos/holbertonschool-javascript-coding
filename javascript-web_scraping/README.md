@@ -48,7 +48,7 @@ request(url, (error, response, body) => {
     }
 });
 ```
-En este ejemplo, se utiliza la biblioteca ``request`` para realizar una solicitud HTTP a la URL especificada. Una vez que se obtiene la respuesta, el cuerpo de la página se pasa a c``heerio`` para analizar y manipular el DOM. Luego, se seleccionan todos los elementos `<h2>` y se imprime su texto en la consola.
+En este ejemplo, se utiliza la biblioteca ``request`` para realizar una solicitud HTTP a la URL especificada. Una vez que se obtiene la respuesta, el cuerpo de la página se pasa a ``cheerio`` para analizar y manipular el DOM. Luego, se seleccionan todos los elementos `<h2>` y se imprime su texto en la consola.
 
 ## Tareas
 
@@ -72,8 +72,6 @@ El repositorio incluye una serie de tareas que te ayudarán a familiarizarte con
         
 Es importante tener en cuenta las leyes y políticas de uso aceptable al realizar Web Scraping. Algunos sitios web pueden tener términos de servicio que prohíben el scraping de sus datos, por lo que es fundamental obtener permiso antes de realizar esta actividad.
 
-
-
+##
 
 Este README proporciona una introducción al web scraping en JavaScript y proporciona instrucciones para comenzar a trabajar con él. Cada tarea en el repositorio te ayudará a profundizar en tus conocimientos y habilidades en esta área.
-
