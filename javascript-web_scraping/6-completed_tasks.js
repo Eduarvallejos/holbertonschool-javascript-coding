@@ -1,7 +1,6 @@
 #!/usr/bin/node
 // This script calculates the number of completed tasks per user ID.
 
-
 const request = require('request');
 
 const apiUrl = process.argv[2];
@@ -31,5 +30,4 @@ if (!apiUrl) {
       console.log(completedTasksByUser);
     }
   });
-};
-
+}
