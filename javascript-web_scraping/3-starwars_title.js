@@ -1,7 +1,6 @@
 #!/usr/bin/node
 // This script prints the title of a Star Wars movie.
 
-
 const request = require('request');
 
 const movieID = process.argv[2];
@@ -20,5 +19,4 @@ if (!movieID) {
       console.log(movie.title);
     }
   });
-};
-
+}
