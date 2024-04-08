@@ -1,4 +1,6 @@
 #!/usr/bin/node
+// This script gets the content of a web page and stores it in a file.
+
 
 const request = require('request');
 const fs = require('fs');
@@ -24,4 +26,5 @@ if (!url || !filePath) {
       });
     }
   });
-}
+};
+
