@@ -53,12 +53,14 @@ const app = http.createServer((req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Hello Holberton School!');
     } else if (req.url === '/students') {
+
         // Handle requests for the /students path
         // Call the countStudents function passing the path of the database file
         countStudents('database.csv')
-            .then(({ totalStudents, fieldsCount }) => {
-                // Respond with the student data
-                res.writeHead(200, { 'Content-Type': 'text/plain' });
+        .then(({ totalStudents, fieldsCount }) => {
+            // Respond with the student data
+            res.writeHead(200, { 'Content-Type': 'text/plain'});
+                res.write('This is the list of our students\n');
                 res.write(`Number of students: ${totalStudents}`);
                 for (const field in fieldsCount) {
                     const { count, names } = fieldsCount[field];
