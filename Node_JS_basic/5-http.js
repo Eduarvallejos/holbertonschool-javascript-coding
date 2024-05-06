@@ -59,10 +59,10 @@ const app = http.createServer((req, res) => {
             .then(({ totalStudents, fieldsCount }) => {
                 // Respond with the student data
                 res.writeHead(200, { 'Content-Type': 'text/plain' });
-                res.write(`Number of students: ${totalStudents}\n`);
+                res.write(`Number of students: ${totalStudents}`);
                 for (const field in fieldsCount) {
                     const { count, names } = fieldsCount[field];
-                    res.write(`Number of students in ${field}: ${count}. List: ${names.join(', ')}\n`);
+                    res.write(`Number of students in ${field}: ${count}. List: ${names.join(', ')}`);
                 }
                 res.end();
             })
@@ -80,9 +80,9 @@ const app = http.createServer((req, res) => {
 });
 
 // Start the server listening on port 1245
-const PORT = 1245;
-app.listen(PORT, () => {
-    console.log(`Server is running and listening on port ${PORT}`);
+const port = 1245;
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}/`);
 });
 
 // Export the app
