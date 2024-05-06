@@ -53,27 +53,29 @@ const app = http.createServer((req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Hello Holberton School!');
     } else if (req.url === '/students') {
-
         // Handle requests for the /students path
         // Call the countStudents function passing the path of the database file
         countStudents('database.csv')
         .then(({ totalStudents, fieldsCount }) => {
-            // Respond with the student data
-            res.writeHead(200, { 'Content-Type': 'text/plain'});
-                res.write('This is the list of our students');
-                res.write(`Number of students: ${totalStudents}`);
-                for (const field in fieldsCount) {
-                    const { count, names } = fieldsCount[field];
-                    res.write(`Number of students in ${field}: ${count}. List: ${names.join(', ')}`);
-                }
-                res.end();
-            })
-            .catch((error) => {
-                // Handle the error if the database cannot be loaded
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal Server Error');
-                console.error(error.message);
-            });
+            // Prepare the response
+            let response = `Total students: ${totalStudents}\n`;
+
+            // Iterate over each field and add the student information to the response
+            for (const field in fieldsCount) {
+                const { count, names } = fieldsCount[field];
+                response += `Number of students in ${field}: ${count}. List: ${names.join(', ')}`;
+            }
+
+            // Send the response
+            res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.end(`This is the list of our students\n${response}`);
+        })
+        .catch((error) => {
+            // Handle the error if the database cannot be loaded
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
+            console.error(error.message);
+        });
     } else {
         // Respond with 404 Not Found for other paths
         res.writeHead(404, { 'Content-Type': 'text/plain' });
