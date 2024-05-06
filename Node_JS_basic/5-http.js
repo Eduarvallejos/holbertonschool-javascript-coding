@@ -60,7 +60,7 @@ const app = http.createServer((req, res) => {
         .then(({ totalStudents, fieldsCount }) => {
             // Respond with the student data
             res.writeHead(200, { 'Content-Type': 'text/plain'});
-                //res.write('This is the list of our students');
+                res.write('This is the list of our students');
                 res.write(`Number of students: ${totalStudents}`);
                 for (const field in fieldsCount) {
                     const { count, names } = fieldsCount[field];
